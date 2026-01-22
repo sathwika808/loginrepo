@@ -1,0 +1,41 @@
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <div class="nav-left">
+    <img
+      class="nav-logo"
+      src="https://media.licdn.com/dms/image/v2/C4E0BAQGd62MJksk1rg/company-logo_200_200/company-logo_200_200/0/1663230076006/ongoframework_logo?e=2147483647&v=beta&t=9BwKK_ZkeKtHZ9ZmCXvBGcWQl7MuM1Va6bh7aMq6bv0"
+    />
+  </div>
+
+  <div class="nav-right">
+    <span class="welcome-text">
+      Welcome, <strong>{{ username }}</strong> 👋
+    </span>
+
+    <button class="logout-btn" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</nav>
+
+<div class="dashboard-container">
+  <div class="card">
+    <h2>User Details</h2>
+
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,209 @@
+:host {
+  /* Using PrimeNG dynamic tokens instead of static hex codes to fix theme flipping */
+  --primary-color: #00aeef;
+  --accent-color: #4ade80;
+  --text-main: var(--p-text-color); /* Correctly adapts to both themes */
+  --text-muted: var(--p-text-muted-color);
+  --bg-surface: var(--p-content-background); /* Fixes background inversion */
+  --border-color: var(--p-content-border-color);
+  --transition: all 0.3s ease;
+  --white: var(--p-content-background); /* Ensures the card matches the detected theme */
+}
+
+/* --- THE ADAPTIVE MESH (Aurora for Dark, Frost for Light) --- */
+/* This adds the neat small animation in the background */
+.theme-aware-mesh {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 1;
+  filter: blur(120px);
+  animation: meshFloat 25s infinite alternate ease-in-out;
+}
+
+/* Dark: Green/Blue Mixed | Light: Silver/Frost Mixed */
+@media (prefers-color-scheme: dark) {
+  .theme-aware-mesh {
+    background:
+      radial-gradient(circle at 30% 30%, #1e40af 0%, transparent 25%),
+      radial-gradient(circle at 70% 70%, #065f46 0%, transparent 25%),
+      radial-gradient(circle at 50% 50%, #1e1b4b 0%, transparent 50%);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .theme-aware-mesh {
+    background:
+      radial-gradient(circle at 30% 30%, rgba(192, 192, 192, 0.4) 0%, transparent 30%),
+      radial-gradient(circle at 70% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 30%),
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 50%);
+  }
+}
+
+@keyframes meshFloat {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(5%, 5%) rotate(5deg);
+  }
+}
+
+/* Layout Wrapper */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  background: var(--bg-surface); /* Updated to dynamic variable */
+  padding: 25px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card Styling */
+.login-card {
+  background: var(--white); /* Updated to dynamic variable */
+  padding: 48px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+  border: 1px solid var(--border-color); /* Added for visibility in Light Mode */
+}
+
+/* Centered Header */
+.login-header {
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container {
+  margin-bottom: 20px;
+}
+
+.main-logo {
+  max-height: 60px;
+  width: auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main); /* Adaptive color */
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--accent-color);
+  font-size: 0.95rem;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* Form Controls */
+.form-control {
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+/* FIX: THEME-AWARE INPUT VISIBILITY */
+:host ::ng-deep .p-inputtext {
+  background: var(--p-inputtext-background) !important;
+  border: 2px solid var(--p-inputtext-border-color) !important;
+  color: var(--p-text-color) !important;
+  width: 100% !important;
+  display: flex !important;
+}
+
+:host ::ng-deep .p-iftalabel,
+:host ::ng-deep .p-password {
+  width: 100% !important;
+  display: flex !important;
+}
+
+:host ::ng-deep .p-password input {
+  width: 100% !important;
+  background: var(--p-inputtext-background) !important;
+  color: var(--p-text-color) !important;
+}
+
+/* Actions Row */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 0.85rem;
+}
+
+.flex-row-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-label {
+  cursor: pointer;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.forgot-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* FIXED THEME-AWARE BUTTONS */
+:host ::ng-deep .p-button {
+  background-color: var(--primary-color) !important;
+  border: none !important;
+  padding: 12px 48px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: var(--transition) !important;
+  color: #ffffff !important; /* Keep text white for better contrast on Blue */
+}
+
+:host ::ng-deep .p-button:hover {
+  filter: brightness(1.1) !important;
+  transform: translateY(-1px);
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Mobile Fixes */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 32px 24px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .login-wrapper {
+    background: var(--bg-surface);
+    padding: 0;
+  }
+}

@@ -1,0 +1,65 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-container">
+        <img
+          src="https://gosure.ai/images/img/Gosure-logo-1.png"
+          alt="Company Logo"
+          class="main-logo"
+        />
+      </div>
+      <h1 class="title">Insurance & Risk Management</h1>
+      <p class="subtitle">Enhanced Digital Experience</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+      <div class="form-control">
+        <p-iftalabel>
+          <input pInputText id="username" formControlName="username" [fluid]="true" />
+          <label for="username">Username (e.g. vertis@gosure.ai)</label>
+        </p-iftalabel>
+      </div>
+
+      <div class="form-control">
+        <p-iftalabel>
+          <p-password
+            id="password"
+            formControlName="password"
+            [toggleMask]="true"
+            [feedback]="false"
+            [fluid]="true"
+            styleClass="w-full"
+          />
+          <label for="password">Password</label>
+        </p-iftalabel>
+      </div>
+
+      <div class="form-actions">
+        <div class="flex-row-center">
+          <p-checkbox id="remember" binary="true" inputId="remember"></p-checkbox>
+          <label for="remember" class="checkbox-label">Remember me</label>
+        </div>
+        <a href="#" class="forgot-link">Forgot Password?</a>
+      </div>
+
+      <div class="button-container">
+        <p-button
+          type="submit"
+          label="Log In"
+          [loading]="isLoading"
+          [disabled]="loginForm.invalid"
+          [style]="{
+            'background-color': '#002d72',
+            border: 'none',
+            padding: '12px 40px',
+            width: 'auto',
+          }"
+        />
+      </div>
+    </form>
+
+    <div class="login-footer">
+      <p>&copy; 2026 GoSure.ai. All rights reserved.</p>
+    </div>
+  </div>
+</div>

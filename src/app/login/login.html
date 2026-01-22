@@ -1,0 +1,74 @@
+<div class="login-wrapper">
+
+  <!-- LEFT PANEL -->
+  <section class="auth-section">
+    <div class="top-brand">GoSure.AI</div>
+
+    <div class="auth-container">
+      <div class="logo-wrap">
+        <span class="logo-e">G</span>
+      </div>
+
+      <h1 class="auth-title">
+        Build Full-Stack<br />
+        <span class="green-highlight">Web & Mobile Apps in minutes</span>
+      </h1>
+
+      <div class="social-actions">
+        <button class="social-btn google-primary" (click)="loginWithGoogle()">
+          <img
+            src="https://1000logos.net/wp-content/uploads/2016/11/New-Google-Logo.jpg"
+            alt="Google"
+          />
+          Continue with Google
+        </button>
+
+        <div class="icon-row">
+          <button class="social-btn icon-only">
+            <i class="pi pi-github"></i>
+          </button>
+          <button class="social-btn icon-only">
+            <i class="pi pi-apple"></i>
+          </button>
+        </div>
+
+        <div class="form-divider">
+          <span></span> OR <span></span>
+        </div>
+
+        <button class="social-btn email-secondary">
+          <i class="pi pi-envelope"></i>
+          Continue with Email
+        </button>
+      </div>
+
+      <p class="terms-text">
+        By continuing, you agree to our
+        <span>Terms of Service</span> and
+        <span>Privacy Policy</span>.
+      </p>
+    </div>
+  </section>
+
+  <!-- RIGHT PANEL -->
+  <section class="carousel-shell">
+    <div class="carousel-card">
+      <p-carousel
+        [value]="slides"
+        [numVisible]="1"
+        [numScroll]="1"
+        [circular]="true"
+        [autoplayInterval]="3000"
+        [showNavigators]="true"
+        [showIndicators]="false"
+      >
+        <ng-template pTemplate="item" let-slide>
+          <div class="image-slide">
+            <img [src]="slide.image" alt="slide" />
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </section>
+
+</div>

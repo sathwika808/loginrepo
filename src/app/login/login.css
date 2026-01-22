@@ -1,0 +1,276 @@
+/* ==================================================
+   GLOBAL RESET
+================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==================================================
+   WRAPPER
+================================================== */
+.login-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  font-family: Inter, sans-serif;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ==================================================
+   LEFT PANEL
+================================================== */
+.auth-section {
+  width: 50%;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  background: inherit;
+}
+
+.top-brand {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.auth-container {
+  margin: auto;
+  max-width: 420px;
+  text-align: center;
+}
+
+/* ==================================================
+   LOGO
+================================================== */
+.logo-wrap {
+  margin-bottom: 28px;
+}
+
+.logo-e {
+  display: inline-block;
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #a5f3fc, #4ade80);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: spin 8s linear infinite;
+  filter: drop-shadow(0 0 18px rgba(74, 222, 128, 0.4));
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* ==================================================
+   TITLE
+================================================== */
+.auth-title {
+  color: #fff;
+  font-size: 2.3rem;
+  line-height: 1.3;
+}
+
+.green-highlight {
+  color: #4ade80;
+}
+
+/* ==================================================
+   BUTTONS
+================================================== */
+.social-actions {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.social-btn {
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.google-primary {
+  background: #fff;
+  color: #000;
+}
+
+.google-primary img {
+  width: 22px;
+  height: 22px;
+}
+
+.icon-row {
+  display: flex;
+  gap: 14px;
+}
+
+.icon-only {
+  flex: 1;
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.email-secondary {
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+/* ==================================================
+   DIVIDER & TERMS
+================================================== */
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.form-divider span {
+  flex: 1;
+  height: 1px;
+  background: #222;
+}
+
+.terms-text {
+  margin-top: 30px;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.terms-text span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ==================================================
+   RIGHT PANEL
+================================================== */
+.carousel-shell {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: inherit;
+}
+
+.carousel-card {
+  width: 100%;
+  max-width: 760px;
+  height: 600px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* ==================================================
+   PRIME NG FULL HEIGHT
+================================================== */
+:host ::ng-deep .p-carousel,
+:host ::ng-deep .p-carousel-content,
+:host ::ng-deep .p-carousel-container,
+:host ::ng-deep .p-carousel-item {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==================================================
+   IMAGE SLIDE
+================================================== */
+.image-slide {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.image-slide img {
+  max-width: 100%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+@media (max-width: 1100px) {
+  .carousel-shell {
+    display: none;
+  }
+}
+
+/* ==================================================
+   LIGHT MODE — FINAL FIX (NO BLACK)
+================================================== */
+@media (prefers-color-scheme: light) {
+
+  body,
+  .login-wrapper,
+  .auth-section,
+  .carousel-shell {
+    background: #ffffff;
+  }
+
+  .top-brand,
+  .auth-title,
+  .terms-text,
+  .form-divider {
+    color: #0f172a;
+  }
+
+  .green-highlight {
+    color: #22c55e;
+  }
+
+  .form-divider span {
+    background: #e5e7eb;
+  }
+
+  .google-primary {
+    background: transparent;
+    color: #0f172a;
+    border: 1px solid #e5e7eb;
+  }
+
+  .icon-only,
+  .email-secondary {
+    background: transparent;
+    color: #0f172a;
+    border: 1px solid #e5e7eb;
+  }
+
+  /* 🔥 HARD FIX — REMOVE BLACK FROM ALL CAROUSEL LAYERS */
+  :host ::ng-deep .carousel-shell,
+  :host ::ng-deep .carousel-card,
+  :host ::ng-deep .p-carousel,
+  :host ::ng-deep .p-carousel-content,
+  :host ::ng-deep .p-carousel-container,
+  :host ::ng-deep .p-carousel-item,
+  :host ::ng-deep .image-slide {
+    background-color: #ffffff !important;
+  }
+
+
+}
